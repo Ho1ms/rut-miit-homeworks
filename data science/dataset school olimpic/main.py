@@ -1,5 +1,6 @@
 import os
 import psycopg2
+import webbrowser
 from flask import request, render_template, Flask
 app = Flask('MAIN', template_folder=os.getcwd())
 data_connect = {'dbname':'MIIT','user':'postgres','host':'localhost','password':''} # Коннект к базе
@@ -47,4 +48,5 @@ def main():
     db.close()
     return render_template('index.html', years=years, subjects=subjects, rows=rows, data_year=data.getlist('year'),data_subject=data.getlist('subject'),data_status=data.getlist('status'))
 
-app.run('0.0.0.0', port=80, debug=True)
+webbrowser.open("http://localhost", new=1)
+app.run('0.0.0.0', port=80, debug=False)
