@@ -16,14 +16,18 @@
 
         <table class="table table-dark table-striped">
             <thead>
+                <th>#</th>
                 <th>коэффициент %</th>
                 <th>Название учреждения</th>
             </thead>
             <tbody>
             {% for row in rows%}
                 <tr>
+                    <td>{{loop.index0+1}}</td>
                     <td>{{row[0]}}</td>
                     <td>{{row[1]}}</td>
+
+
                 </tr>
             {% endfor %}
             </tbody>

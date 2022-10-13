@@ -10,7 +10,7 @@ def main():
     db = psycopg2.connect(**data_connect)
     sql = db.cursor()
 
-    sql.execute('SELECT year FROM schools GROUP BY year') # будем в форму выводить данные для выборки по годам
+    sql.execute('SELECT year FROM schools GROUP BY year ORDER BY year DESC') # будем в форму выводить данные для выборки по годам
     years = sql.fetchall()
     sql.execute('SELECT subject FROM schools GROUP BY subject') # будем в форму выводить данные для выборки
     subjects = sql.fetchall()
@@ -21,9 +21,8 @@ def main():
         year = "(" + ''.join([f"year='{r}' OR " for r in data.getlist('year') if r != 'all'])[:-3]+')'
         subject =  "(" + ''.join([f"subject='{r}' OR " for r in data.getlist('subject') if r != 'all'])[:-3]+')'
         status =  "(" + ''.join([f"status='{r}' OR " for r in data.getlist('status') if r != 'all'])[:-3]+')'
-        print(year)
-        print(subject)
-        print(status)
+
+
         q = f"""
         SELECT fullname, count(fullname) 
         FROM schools 
