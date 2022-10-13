@@ -26,7 +26,9 @@ UPDATE questionnaires SET "Компания" = 'ГРИНРУС-АТОМ' WHERE "
 UPDATE questionnaires SET "Компания" = 'ООО "КБ-14"' WHERE "Компания" = 'ООО "КБ-140"';
 UPDATE questionnaires SET "Компания" = 'ФГУБ "Салют-3"' WHERE "Компания" in ('ФГУБ "Салют"','ФГУБ "Салют3"');
 
-Создаём таблицу report с полями company_id - id компании, total_salary - ЗП за 4 квартала
+Создаём таблицу report с полями company_id - id компании, total_salary - ЗП за 4 квартала 
+
+(Это можно было сделать через подзапрос, но я сонный, где-то не так его написал, и подумал что он не будет работать:( )
 CREATE TABLE report
 (
     user_id "char",
@@ -74,7 +76,6 @@ def get_data():
         data_2[firm[0]] = {}
         for i, _type in enumerate(funcs, start=1):
             data_2[firm[0]][_type] = int(firm[i])
-
     return data_1, data_2
 
 def drawing():
