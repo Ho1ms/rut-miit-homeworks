@@ -21,7 +21,7 @@ screen = pygame.display.set_mode((900, 900), pygame.NOFRAME)
 
 pygame.init()
 screen.fill((11, 16, 61))
-ghost = pygame.image.load('/ghost3.png')
+ghost = pygame.transform.scale(pygame.image.load('ghost3.png'),(160,160))
 
 
 def coord_handler(coords:list, handle:int) -> list:
